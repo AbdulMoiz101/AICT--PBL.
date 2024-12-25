@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelVerse</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body, h1, h2, h3, p, ul, li, a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f3f4f6;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header .logo img {
+            max-height: 50px;
+        }
+
+        .header .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header .nav ul li a:hover {
+            color: #E67E22;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #E67E22, #16A085);
+            color: #fff;
+            padding: 50px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1 1 50%;
+            text-align: left;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-buttons .btn {
+            padding: 10px 20px;
+            margin-right: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .hero-buttons .btn.primary {
+            background: #34495E;
+            color: #fff;
+        }
+
+        .hero-buttons .btn.secondary {
+            background: #fff;
+            color: #34495E;
+            border: 2px solid #34495E;
+        }
+
+        .hero-buttons .btn:hover {
+            opacity: 0.8;
+        }
+
+        .hero-image {
+            flex: 1 1 50%;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .products, .developers, .contact {
+            padding: 50px 0;
+            text-align: center;
+            background: #ECF0F1;
+        }
+
+        .products h2, .developers h2, .contact h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            color: #34495E;
+        }
+
+        .products h2 span, .developers h2 span, .contact h2 span {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .products h2 span:hover, .developers h2 span:hover, .contact h2 span:hover {
+            background: linear-gradient(to right, #E67E22, #16A085);
+            color: white;
+        }
+
+        .product-grid, .developer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .product, .developer {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover, .developer:hover {
+            transform: scale(1.05);
+        }
+
+        .product img, .developer img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .footer {
+            background: #34495E;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .footer .social-links img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form input, .contact-form textarea, .contact-form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background: #E67E22;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #34495E;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="pixelverselogo.jpg" alt="PixelVerse Logo">
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#developers">Developers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to PixelVerse</h1>
+                <p>PixelVerse is your ultimate resource for finding the perfect smartphone camera. We provide in-depth reviews, comparisons, and expert insights on the latest mobile phones with cutting-edge camera technology. Whether you're a professional photographer or a casual enthusiast, PixelVerse helps you capture stunning photos and videos.</p>
+                <p>Discover the best products and services tailored just for you!</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn primary">Explore Products</a>
+                    <a href="#contact" class="btn secondary">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="Epic_Phones.png" alt="Smartphone Hero Image">
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2><span>Our Products</span></h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="16_pro_max.jpg" alt="iPhone 16 Pro Max">
+                    <h3>iPhone 16 Pro Max</h3>
+                    <p>The iPhone 16 Pro Max boasts a cutting-edge camera system featuring a 48MP main camera, 48MP ultra-wide camera, and 12MP 5x telephoto camera. Advanced features like the Photonic Engine, Cinematic mode, and Macro Photography capture stunning photos and videos with exceptional detail and low-light performance.</p>
+                </div>
+                <div class="product">
+                    <img src="galaxy_s24_ultra.jpg" alt="Samsung Galaxy S24 Ultra">
+                    <h3>Samsung Galaxy S24 Ultra</h3>
+                    <p>The Samsung Galaxy S24 Ultra boasts a cutting-edge camera system featuring a groundbreaking 200MP main sensor, providing exceptional detail and clarity. It also includes a versatile array of lenses for capturing stunning photos and videos, including ultra-wide, telephoto, and super telephoto options.</p>
+                </div>
+                <div class="product">
+                    <img src="pixel_9_pro.jpg" alt="Google Pixel 9 Pro">
+                    <h3>Google Pixel 9 Pro</h3>
+                    <p>The Google Pixel 9 Pro features a cutting-edge camera system that delivers exceptional image quality. Its triple rear camera setup includes a 50MP main camera for stunning detail, a 48MP ultrawide camera with impressive low-light performance, and a 48MP 5x telephoto camera for powerful zoom capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="developers" id="developers">
+        <div class="container">
+            <h2><span>Meet Our Developers</span></h2>
+            <div class="developer-grid">
+                <div class="developer">
+                    <h3>Zaeem Akhtar</h3>
+                    <p>Zaeem Akhtar is a talented developer with strong problem-solving skills.</p>
+                </div>
+                <div class="developer">
+                    <h3>Abdul Moiz</h3>
+                    <p>Abdul Moiz is a skilled full-stack developer with a passion for crafting innovative and user-friendly web applications.</p>
+                </div>
+                <div class="developer">
+                    <h3>Subhan Afsar</h3>
+                    <p>Subhan Afsar is an innovative software engineer dedicated to improving user experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2><span>Contact Us</span></h2>
+            <div class="contact-form">
+                <form action="#">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 PixelVerse. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="https://www.twitter.com" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+                <a href="https://www.github.com" target="_blank"><img src="github-icon.png" alt="GitHub"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
